@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let pacmanCurrentIndex = 490
 
     var img = document.createElement("img");
-    img.src = "test_image.png";
+    img.src = "karl_havoc.png";
 
     squares[pacmanCurrentIndex].classList.add('pac-man')
     squares[pacmanCurrentIndex].appendChild(img)
