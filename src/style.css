@@ -13,13 +13,14 @@
 }
 
 .pac-dot {
-	background-color: green;
+	background-color: rgba(0, 78, 0, 0.5);
 	border: 5px solid white;
 	box-sizing: border-box;
+	border-radius: 10px;
 }
 
 .wall {
-	background-color: blue;
+	background-color: lightgrey;
 }
 
 .power-pellet {
@@ -31,10 +32,86 @@
 }
 
 .power-pellet:before {
-  content: "🍵";
+  content: "🌭";
 }
 
 .pac-man {
-	background-color: yellow;
+	background-color: transparent;
 	border-radius: 10px;
 }
+
+.blinky {
+	background-color: red;
+	border: 0px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 0px;
+}
+
+.blinky:before {
+  content: "🎥";
+}
+
+.pinky {
+	background-color: pink;
+	border: 0px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 0px;
+}
+
+.pinky:before {
+  content: "🎥";
+}
+
+.inky {
+	background-color: cyan;
+	border: 0px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 0px;
+}
+
+.inky:before {
+  content: "🎥";
+}
+
+.clyde {
+	background-color: orange;
+	border: 0px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 0px;
+}
+
+.clyde:before {
+  content: "🎥";
+}
+
+.scared-ghost {
+	background-color: aquamarine;
+	border: 0px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.scared-ghost:before {
+  content: "🎥";
+}
+
+
+
+
+
+
+
+
+
+
+
+

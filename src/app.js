@@ -71,7 +71,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let pacmanCurrentIndex = 490
 
+    var img = document.createElement("img");
+    img.src = "test_image.png";
+
     squares[pacmanCurrentIndex].classList.add('pac-man')
+    squares[pacmanCurrentIndex].appendChild(img)
 
 // move pac-man
 
@@ -122,6 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         squares[pacmanCurrentIndex].classList.add('pac-man')
+        squares[pacmanCurrentIndex].appendChild(img)
 
         pacDotEaten()
     }
@@ -141,5 +146,60 @@ document.addEventListener('DOMContentLoaded', () => {
             squares[pacmanCurrentIndex].classList.remove('pac-dot')
         }
     }
+
+    // create Ghost template
+    class Ghost {
+        constructor(className, startIndex, speed) {
+            this.className = className
+            this.startIndex = startIndex
+            this.speed = speed
+            this.currentIndex = startIndex
+            this.timerId = NaN
+        }
+    }
+
+    ghosts = [
+        new Ghost('blinky', 348, 150),
+        new Ghost('pinky', 376, 175),
+        new Ghost('inky', 351, 200),
+        new Ghost('clyde', 379, 500)
+    ]
+
+    // draw ghosts onto the grid
+    ghosts.forEach(ghost => {
+        squares[ghost.currentIndex].classList.add(ghost.className)
+        squares[ghost.currentIndex].classList.add('ghost')
+    })
+
+    //move the ghosts
+
+    ghosts.forEach(ghost => moveGhost(ghost))
+
+    //write function to move the ghosts
+    function moveGhost(ghost) {
+        const directions =[-1, +1, width, -width]
+        let direction = directions[Math.floor(Math.random() * directions.length)]
+
+        ghost.timerId = setInterval(function() {
+            // if the square your ghost is moving to does not contain wall or ghost
+            if (!squares[ghost.currentIndex + direction].classList.contains('wall') &&
+                !squares[ghost.currentIndex + direction].classList.contains('ghost')) {
+                // you can go here
+                // remove all ghost related classes
+                squares[ghost.currentIndex].classList.remove(ghost.className, 'ghost', 'scared-ghost')
+                // redraw the currentIndex to the safe to move to square
+                ghost.currentIndex += direction
+                // redraw the ghost in the new square
+                squares[ghost.currentIndex].classList.add(ghost.className, 'ghost')
+
+
+            // else, find a new direction to try:
+            } else {
+                direction = directions[Math.floor(Math.random() * directions.length)]
+            }
+        }, ghost.speed)
+    }
+
+
 })
 
